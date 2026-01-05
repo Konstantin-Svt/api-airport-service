@@ -1,5 +1,6 @@
 import os
 import uuid
+from datetime import datetime
 
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ValidationError
@@ -19,7 +20,7 @@ class Crew(models.Model):
         return f"{self.first_name} {self.last_name}"
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return self.full_name
 
 
 class Airport(models.Model):
@@ -36,15 +37,33 @@ class Airport(models.Model):
 
 class Route(models.Model):
     source = models.ForeignKey(
-        Airport, on_delete=models.CASCADE, related_name="routes"
+        Airport, on_delete=models.CASCADE, related_name="source_routes"
     )
     destination = models.ForeignKey(
-        Airport, on_delete=models.CASCADE, related_name="routes"
+        Airport, on_delete=models.CASCADE, related_name="destination_routes"
     )
     distance = models.PositiveIntegerField()
 
     class Meta:
         unique_together = ("source", "destination")
+
+    @staticmethod
+    def validate_airports(source, destination, error_to_raise):
+        if source == destination:
+            raise error_to_raise(
+                "Source airport cannot be the same as destination airport."
+            )
+
+    def clean(self):
+        Route.validate_airports(
+            self.source,
+            self.destination,
+            error_to_raise=ValidationError,
+        )
+
+    def save(self, *args, **kwargs):
+        self.full_clean()
+        return super().save(*args, **kwargs)
 
     def __str__(self):
         return f"{self.source} -> {self.destination}"
@@ -97,6 +116,7 @@ class Flight(models.Model):
     )
     departure_time = models.DateTimeField()
     arrival_time = models.DateTimeField()
+    crew = models.ManyToManyField(Crew, related_name="flights", blank=True)
 
     class Meta:
         ordering = ("departure_time",)
@@ -105,7 +125,7 @@ class Flight(models.Model):
     def validate_datetime(departure_time, arrival_time, error_to_raise):
         if departure_time > arrival_time:
             raise error_to_raise(
-                "Departure time must be earlier than Arrival time"
+                "Departure time must be earlier than Arrival time."
             )
 
     def clean(self):
@@ -121,8 +141,9 @@ class Flight(models.Model):
 
     def __str__(self):
         return (
-            f"Flight {str(self.route)}"
-            f"({str(self.departure_time)} - {str(self.arrival_time)})"
+            f"{str(self.route)} "
+            f"({datetime.strftime(self.departure_time, '%Y-%m-%d %H:%M')}"
+            f" - {datetime.strftime(self.arrival_time, '%Y-%m-%d %H:%M')})"
         )
 
 
@@ -136,7 +157,7 @@ class Order(models.Model):
         ordering = ("-created_at",)
 
     def __str__(self):
-        return str(self.created_at)
+        return f"Order {datetime.strftime(self.created_at, '%Y-%m-%d %H:%M')}"
 
 
 class Ticket(models.Model):
@@ -160,7 +181,7 @@ class Ticket(models.Model):
             (seat, "seat", "seats_in_row"),
         ):
             attr_value = getattr(airplane, attr_name)
-            if 1 <= value <= attr_value:
+            if not 1 <= value <= attr_value:
                 raise error_to_raise(
                     {
                         value_name: f"{value_name} "
