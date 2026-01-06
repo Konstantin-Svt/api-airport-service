@@ -10,6 +10,7 @@ services:
       - POSTGRES_USER
       - POSTGRES_HOST
       - POSTGRES_PORT
+      - ALLOWED_HOSTS
       - SECRET_KEY
       - DEBUG
     ports:
