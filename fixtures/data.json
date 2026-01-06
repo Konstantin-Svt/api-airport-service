@@ -1,0 +1,421 @@
+[
+{
+  "model": "contenttypes.contenttype",
+  "pk": 1,
+  "fields": {
+    "app_label": "admin",
+    "model": "logentry"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 2,
+  "fields": {
+    "app_label": "auth",
+    "model": "group"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 3,
+  "fields": {
+    "app_label": "auth",
+    "model": "permission"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 4,
+  "fields": {
+    "app_label": "contenttypes",
+    "model": "contenttype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 5,
+  "fields": {
+    "app_label": "sessions",
+    "model": "session"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 6,
+  "fields": {
+    "app_label": "airport",
+    "model": "airplane"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 7,
+  "fields": {
+    "app_label": "airport",
+    "model": "airplanetype"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 8,
+  "fields": {
+    "app_label": "airport",
+    "model": "airport"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 9,
+  "fields": {
+    "app_label": "airport",
+    "model": "crew"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 10,
+  "fields": {
+    "app_label": "airport",
+    "model": "flight"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 11,
+  "fields": {
+    "app_label": "airport",
+    "model": "order"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 12,
+  "fields": {
+    "app_label": "airport",
+    "model": "route"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 13,
+  "fields": {
+    "app_label": "airport",
+    "model": "ticket"
+  }
+},
+{
+  "model": "contenttypes.contenttype",
+  "pk": 14,
+  "fields": {
+    "app_label": "user",
+    "model": "user"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "pkrtrnkzy7uck7335iaeukaaomj3cbky",
+  "fields": {
+    "session_data": ".eJxVjDEOwjAMRe-SGUV2rSYNIztnqJzYJQWUSE07Ie4OlTrA-t97_2VG3tY8bk2XcRZzNmhOv1vk9NCyA7lzuVWbalmXOdpdsQdt9lpFn5fD_TvI3PK3doMT0ijODQAU2AcU1_WOVBQ9QMKJO-WeyMcUhoQIYWKPBD0HmNi8P824N2Y:1vafbv:QsgF13b1aylT9k9kmcYHRzsoTjFKPYm17Lu8qwO5Bwc",
+    "expire_date": "2026-01-13T19:42:27.292Z"
+  }
+},
+{
+  "model": "airport.crew",
+  "pk": 1,
+  "fields": {
+    "first_name": "Sanya",
+    "last_name": "Rofler"
+  }
+},
+{
+  "model": "airport.crew",
+  "pk": 2,
+  "fields": {
+    "first_name": "Super",
+    "last_name": "Maaaan"
+  }
+},
+{
+  "model": "airport.crew",
+  "pk": 3,
+  "fields": {
+    "first_name": "Power",
+    "last_name": "Girl"
+  }
+},
+{
+  "model": "airport.crew",
+  "pk": 4,
+  "fields": {
+    "first_name": "Eliajah",
+    "last_name": "Mad"
+  }
+},
+{
+  "model": "airport.airport",
+  "pk": 1,
+  "fields": {
+    "name": "Borispol",
+    "closest_city": "Kiev"
+  }
+},
+{
+  "model": "airport.airport",
+  "pk": 2,
+  "fields": {
+    "name": "Lviv",
+    "closest_city": "Lviv"
+  }
+},
+{
+  "model": "airport.airport",
+  "pk": 3,
+  "fields": {
+    "name": "Juliany",
+    "closest_city": "Kiev"
+  }
+},
+{
+  "model": "airport.route",
+  "pk": 1,
+  "fields": {
+    "source": 1,
+    "destination": 2,
+    "distance": 600
+  }
+},
+{
+  "model": "airport.route",
+  "pk": 2,
+  "fields": {
+    "source": 2,
+    "destination": 1,
+    "distance": 600
+  }
+},
+{
+  "model": "airport.route",
+  "pk": 3,
+  "fields": {
+    "source": 1,
+    "destination": 3,
+    "distance": 50
+  }
+},
+{
+  "model": "airport.airplanetype",
+  "pk": 1,
+  "fields": {
+    "name": "Cessna",
+    "image": ""
+  }
+},
+{
+  "model": "airport.airplane",
+  "pk": 1,
+  "fields": {
+    "name": "FF 5643 GFX",
+    "rows": 2,
+    "seats_in_row": 10,
+    "airplane_type": 1
+  }
+},
+{
+  "model": "airport.airplane",
+  "pk": 2,
+  "fields": {
+    "name": "DF 8548 RDX",
+    "rows": 2,
+    "seats_in_row": 8,
+    "airplane_type": 1
+  }
+},
+{
+  "model": "airport.flight",
+  "pk": 1,
+  "fields": {
+    "route": 1,
+    "airplane": 2,
+    "departure_time": "2025-12-24T14:20:00Z",
+    "arrival_time": "2025-12-26T14:20:00Z",
+    "crew": [
+      3,
+      2
+    ]
+  }
+},
+{
+  "model": "airport.flight",
+  "pk": 2,
+  "fields": {
+    "route": 2,
+    "airplane": 1,
+    "departure_time": "2025-12-25T15:32:00Z",
+    "arrival_time": "2025-12-26T15:32:00Z",
+    "crew": [
+      1
+    ]
+  }
+},
+{
+  "model": "airport.flight",
+  "pk": 3,
+  "fields": {
+    "route": 3,
+    "airplane": 1,
+    "departure_time": "2025-12-10T15:44:00Z",
+    "arrival_time": "2025-12-11T15:44:00Z",
+    "crew": [
+      3,
+      1,
+      2
+    ]
+  }
+},
+{
+  "model": "airport.flight",
+  "pk": 4,
+  "fields": {
+    "route": 2,
+    "airplane": 2,
+    "departure_time": "2025-12-01T15:45:00Z",
+    "arrival_time": "2025-12-03T15:45:00Z",
+    "crew": [
+      3,
+      1
+    ]
+  }
+},
+{
+  "model": "airport.flight",
+  "pk": 5,
+  "fields": {
+    "route": 3,
+    "airplane": 2,
+    "departure_time": "2026-01-01T23:53:00Z",
+    "arrival_time": "2026-01-03T23:53:00Z",
+    "crew": [
+      4
+    ]
+  }
+},
+{
+  "model": "airport.order",
+  "pk": 1,
+  "fields": {
+    "created_at": "2025-12-30T19:45:10.551Z",
+    "user": 1
+  }
+},
+{
+  "model": "airport.order",
+  "pk": 2,
+  "fields": {
+    "created_at": "2025-12-30T20:03:11.010Z",
+    "user": 1
+  }
+},
+{
+  "model": "airport.order",
+  "pk": 3,
+  "fields": {
+    "created_at": "2025-12-30T20:06:26.514Z",
+    "user": 1
+  }
+},
+{
+  "model": "airport.order",
+  "pk": 4,
+  "fields": {
+    "created_at": "2025-12-30T20:12:19.286Z",
+    "user": 1
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 1,
+  "fields": {
+    "row": 1,
+    "seat": 1,
+    "flight": 4,
+    "order": 1
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 2,
+  "fields": {
+    "row": 2,
+    "seat": 1,
+    "flight": 4,
+    "order": 2
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 3,
+  "fields": {
+    "row": 2,
+    "seat": 2,
+    "flight": 4,
+    "order": 3
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 4,
+  "fields": {
+    "row": 1,
+    "seat": 3,
+    "flight": 1,
+    "order": 4
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 5,
+  "fields": {
+    "row": 1,
+    "seat": 3,
+    "flight": 2,
+    "order": 4
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 6,
+  "fields": {
+    "row": 1,
+    "seat": 3,
+    "flight": 3,
+    "order": 4
+  }
+},
+{
+  "model": "airport.ticket",
+  "pk": 7,
+  "fields": {
+    "row": 1,
+    "seat": 3,
+    "flight": 4,
+    "order": 4
+  }
+},
+{
+  "model": "user.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1200000$YDytigknXZFVsXiYKJg23c$pJUf32ekcH1Odmytzmb7WE7eHWJr2XiI429FwnKS3U0=",
+    "last_login": "2025-12-30T19:42:27.285Z",
+    "is_superuser": true,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-12-29T17:17:26.506Z",
+    "email": "admin@admin",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
