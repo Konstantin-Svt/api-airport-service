@@ -1,0 +1,9 @@
+README.md
+.venv
+venv
+.idea
+__pycache__/
+.gitignore
+*.sqlite3
+fixtures
+.git
