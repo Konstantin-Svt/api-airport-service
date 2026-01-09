@@ -1,5 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, AuthUser
+from rest_framework_simplejwt.tokens import Token
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -23,3 +25,11 @@ class UserSerializer(serializers.ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+
+class TVTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user: AuthUser) -> Token:
+        token = super().get_token(user)
+        token["tv"] = user.token_version
+        return token

@@ -4,7 +4,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 
-from user.views import UserCreateView, UserManageView
+from user.views import UserCreateView, UserManageView, ResetTokenAPIView
 
 
 app_name = "user"
@@ -22,4 +22,9 @@ urlpatterns = [
         TokenRefreshView.as_view(),
         name="token_refresh",
     ),
+    path(
+        "token/reset/",
+        ResetTokenAPIView.as_view(),
+        name="token_reset",
+    )
 ]

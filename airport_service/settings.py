@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     # libs
     "debug_toolbar",
     "rest_framework",
+    "rest_framework_simplejwt.token_blacklist",
     "drf_spectacular",
     # apps
     "airport",
@@ -152,7 +153,7 @@ REST_FRAMEWORK = {
     "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_PERMISSION_CLASSES": ("airport.permissions.IsAdminOrReadOnly",),
     "DEFAULT_AUTHENTICATION_CLASSES": (
-        "rest_framework_simplejwt.authentication.JWTAuthentication",
+        "user.authentication.TVJWTAuthentication",
     ),
     "DEFAULT_THROTTLE_CLASSES": (
         "rest_framework.throttling.AnonRateThrottle",
@@ -180,4 +181,9 @@ SPECTACULAR_SETTINGS = {
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(hours=2),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "TOKEN_OBTAIN_SERIALIZER": "user.serializers.TVTokenObtainPairSerializer",
 }
+
+CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "redis://localhost:6379/0")
+
+CELERY_TIME_TASK_LIMIT = 30 * 60

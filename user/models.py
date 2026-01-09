@@ -79,6 +79,7 @@ class EmailUserManager(UserManager):
 class User(AbstractUser):
     username = None
     email = models.EmailField(_("email address"), unique=True)
+    token_version = models.IntegerField(default=0)
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
     objects = EmailUserManager()
